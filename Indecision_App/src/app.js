@@ -13,7 +13,7 @@ class IndecisionApp extends React.Component {
         this.setState(()=>{
             return {
                 options:[]
-            }
+            };
         });
         
     }
