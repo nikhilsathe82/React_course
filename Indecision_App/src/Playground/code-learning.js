@@ -6,9 +6,23 @@ class Counter extends React.Component
         this.handleMinusOne = this.handleMinusOne.bind(this)
         this.handleReset = this.handleReset.bind(this)
         this.state = { //set state of count
-            count:0,
+            count:0
             
         };
+    }
+    componentDidMount() { //also works to grab update value inside componentdidupdate
+        const stringCount = localStorage.getItem('count');
+        const count = parseInt(stringCount,10);
+            if (!isNaN(count)) { //to check whether count is number or not. !isNan returns a true as it checks for not a number
+                this.setState (() => ({ count: count })); //or simply use 'count' as object propert and var name are having same name
+            }
+        
+    }
+    componentDidUpdate(prevProps, prevState){
+        if (prevState.count != this.state.count){
+            //const num = JSON.parseInt(this.state.count);
+            localStorage.setItem('count',this.state.count);
+        }
     }
     handleAddOne(){
         this.setState((prevState) =>{ //prevState is object. to take the previous value of count and increment it

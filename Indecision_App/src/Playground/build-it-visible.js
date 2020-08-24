@@ -3,7 +3,7 @@ class VisibilityToggle extends React.Component {
         super(props);
         this.handleToggleVisibility = this.handleToggleVisibility.bind(this); //preserve the binding with the function
         this.state = {
-            visibility: false
+            visibility: props.visibility
         }
     };
     handleToggleVisibility (){
@@ -28,9 +28,10 @@ class VisibilityToggle extends React.Component {
             </div>
         )
     }
-
-
 }
+VisibilityToggle.defaultProps{
+  visibility:false
+};
 ReactDOM.render(<VisibilityToggle />,document.getElementById('app'));
 
 // let visibility = false;
